@@ -41,6 +41,12 @@ ul {
   padding-left: 0px;
 }
 
+p {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
 .current {
   margin: auto;
   max-width: 500px;
