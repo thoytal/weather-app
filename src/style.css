@@ -52,9 +52,6 @@ p {
   max-width: 500px;
   margin-bottom: 25px;
 }
-#current {
-  columns: 2 auto;
-}
 
 .currentImage {
   width: 55px;

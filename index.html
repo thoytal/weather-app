@@ -17,23 +17,31 @@
   <body>
     <div class="container">
       <form>
-        <input
-          type="text"
-          id="location"
-          placeholder="Enter City, State, or Zip Code"
-        />
+        <input type="text" id="location" placeholder="Enter City" />
         <input type="submit" class="btn btn-primary" />
       </form>
       <button type="button">Current Location</button>
       <div class="current">
-        <h1 id="city"></h1>
-        <ul id="current">
-          <li><span id="current-date"></span></li>
-          <li><span id="current-conditions"></span></li>
-          <li><span id="currentTemp"></span>°F</li>
-          <li>Humidity: <span id="humidity"></span>%</li>
-          <li>Wind: <span id="wind"></span> mph</li>
-        </ul>
+        <div class="">
+          <h1 id="city"></h1>
+          <ul>
+            <li>Last updated:<span id="current-date"></span></li>
+            <li><span id="current-conditions"></span></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <img id="icon" src="" class="float-left" />
+            <strong id="currentTemp"></strong>
+            <span class="units">°F | <a href="#">°C</a></span>
+          </div>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span> mp/h</li>
+          </ul>
+        </div>
       </div>
 
       <ul class="dailyForecast">
