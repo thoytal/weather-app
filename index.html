@@ -25,7 +25,7 @@
         <div class="">
           <h1 id="city"></h1>
           <ul>
-            <li>Last updated:<span id="current-date"></span></li>
+            <li><span id="current-date"></span></li>
             <li><span id="current-conditions"></span></li>
           </ul>
         </div>
@@ -33,14 +33,18 @@
           <div class="col-6">
             <img id="icon" src="" class="float-left" />
             <strong id="currentTemp"></strong>
-            <span class="units">°F | <a href="#">°C</a></span>
+            <span class="units"
+              ><a href="#" id="celsius-link">°C</a> |
+              <a href="#" id="fahrenheit-link">°F</a>
+            </span>
           </div>
-        </div>
-        <div class="col-6">
-          <ul>
-            <li>Humidity: <span id="humidity"></span>%</li>
-            <li>Wind: <span id="wind"></span> mp/h</li>
-          </ul>
+
+          <div class="col-6">
+            <ul>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> mp/h</li>
+            </ul>
+          </div>
         </div>
       </div>
 
