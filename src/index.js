@@ -23,6 +23,26 @@ function formatDate(currentTime) {
 
 document.getElementById("current-date").innerHTML = formatDate(currentTime);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+<li class="day">${day}</li>
+        <li class="date">4/8</li>
+        <li>
+          <img src="images/Sunny.png" alt="sunny icon" />
+        </li>
+        <li class="high">High: 79°F</li>
+        <li class="low">Low: 60°F</li>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#current-conditions").innerHTML =
@@ -102,3 +122,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Austin");
+displayForecast();
