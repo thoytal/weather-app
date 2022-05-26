@@ -21,33 +21,52 @@ function formatDate(currentTime) {
   return formattedDate;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
 document.getElementById("current-date").innerHTML = formatDate(currentTime);
 
 function getForecast(coordinates) {
   let apiKey = "57c85a0a26b344352fe49171a4724f4d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric
 `;
-  console.log(apiUrl);
+  //console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
-  let days = ["Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-<li class="day">${day}</li>
-        <li class="date">4/8</li>
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+<li class="day">${formatDay(forecastDay.dt)}</li>
+       
         <li>
-          <img src="images/Sunny.png" alt="sunny icon" />
+          <img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png" alt="" />
         </li>
-        <li class="high">High: 79°F</li>
-        <li class="low">Low: 60°F</li>`;
+        <li class="high">High: ${Math.round(forecastDay.temp.max)}°</li>
+        <li class="low">Low: ${Math.round(forecastDay.temp.min)}°</li>`;
+    }
   });
   forecastElement.innerHTML = forecastHTML;
 }
