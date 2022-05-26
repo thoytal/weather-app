@@ -23,7 +23,16 @@ function formatDate(currentTime) {
 
 document.getElementById("current-date").innerHTML = formatDate(currentTime);
 
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiKey = "57c85a0a26b344352fe49171a4724f4d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric
+`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
@@ -64,6 +73,8 @@ function showTemperature(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  getForecast(response.data.coord);
 
   //console.log(response.data);
 }
@@ -122,4 +133,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Austin");
-displayForecast();
