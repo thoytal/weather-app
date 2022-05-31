@@ -36,7 +36,6 @@ button {
 
 ul {
   list-style: none;
-  text-align: left;
   padding-left: 0px;
 }
 
@@ -52,23 +51,11 @@ p {
   margin-bottom: 25px;
 }
 
-.currentImage {
-  width: 55px;
-  margin-right: 5px;
-}
 #currentTemp {
   font-size: 35px;
 }
 .link {
   font-size: 20px;
-}
-
-#celsius-link {
-  text-decoration: none;
-}
-
-#fahrenheit-link {
-  text-decoration: none;
 }
 
 .dailyForecast {
